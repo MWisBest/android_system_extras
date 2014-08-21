@@ -19,6 +19,10 @@
 
 #include "memtest.h"
 
+#if __cplusplus < 201103L && !defined(__GXX_EXPERIMENTAL_CXX0X__) && !defined(constexpr)
+#define constexpr const
+#endif
+
 // Bandwidth Class definitions.
 class BandwidthBenchmark {
 public:
@@ -90,8 +94,8 @@ protected:
 
 private:
     // Static constants
-    static const double _NUM_NS_PER_SEC = 1000000000.0;
-    static const double _BYTES_PER_MB = 1024.0* 1024.0;
+    static constexpr double _NUM_NS_PER_SEC = 1000000000.0;
+    static constexpr double _BYTES_PER_MB = 1024.0* 1024.0;
 };
 
 class CopyBandwidthBenchmark : public BandwidthBenchmark {
